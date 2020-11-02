@@ -32,13 +32,13 @@ Modify `Robot` to make it work with `RobotEnvironment`
 
 * `moveToPosition` must not deal with the exception directly. In fact, we don't expect `Robot` to deal with the exception at all, but those who use it!
 * `moveToPosition` must be changed to account for the changes in `RobotEnvironment.move()`
-* `moveUp` and `moveDown` need a refactoring as well
+* `moveUp`, `moveDown`, `moveLeft`, and `moveRight` need a refactoring as well
 
 ### `BaseRobotTest`
 
 * Modify `BaseRobotTest.testRobotMovementBase` in order to verify that the exceptions are correctly thrown
 * **HINT**: Use `Assert.fail()` in the try block, and `Assert.assertNotNull()` to verify that the exception message is present
- 
+
 ## Design a new exception
 
 Design and realize `NotEnoughBatteryException`, to be thrown when the robot is asked to move (whatever the direction) in case the battery is not sufficient
@@ -50,4 +50,3 @@ Design and realize `NotEnoughBatteryException`, to be thrown when the robot is a
 * Throw an exception if there is not enough battery)
 * Refactor `moveUp` and `moveDown`
 * Modify `BaseRobotTest.testRobotBatteryBase()` to verify that the exception is correctly implemented and thrown
-  
