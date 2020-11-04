@@ -86,7 +86,7 @@ public class StrictBankAccount implements BankAccount {
      * 
      * {@inheritDoc}
      */
-    public int getNTransactions() {
+    public int getTransactionCount() {
         return nTransactions;
     }
 
