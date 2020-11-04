@@ -132,7 +132,7 @@ public class StrictBankAccount implements BankAccount {
      * 
      * @return The total number of transaction for the account
      */
-    public int getNTransactions() {
+    public int getTransactionCount() {
         return nTransactions;
     }
 
