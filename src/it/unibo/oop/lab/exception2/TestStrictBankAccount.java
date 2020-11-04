@@ -9,7 +9,7 @@ import org.junit.Test;
  * JUnit test to test
  * {@link it.unibo.oop.lab.exception2.StrictBankAccount}.
  */
-public class TestStrictBankAccount {
+public final class TestStrictBankAccount {
 
     private static final int INITIAL_AMOUNT = 10_000;
     private static final int TOO_MUCH = 50_000;
