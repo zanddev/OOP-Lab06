@@ -50,7 +50,7 @@ public interface BankAccount {
      * @param usrID
      *            id of the user requesting this opera
      * @param amount
-     *            amount to be withdrawn via AT
+     *            amount to be withdrawn via ATM
      * 
      * @throws WrongAccountHolderException
      *             if an unauthorized user tries to withdraw
