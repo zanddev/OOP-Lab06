@@ -26,7 +26,6 @@ public final class UseCollection {
 		 */
 		List<Integer> list = new ArrayList<Integer>();
 	
-		
 		// Sol 1.1
 		/*
 		final int START = 1000;
@@ -45,19 +44,29 @@ public final class UseCollection {
 	
 		System.out.println("list: " + list.toString());
 	
-        /*
-         * 2) Create a new LinkedList<Integer> and, in a single line of code
-         * without using any looping construct (for, while), populate it with
-         * the same contents of the list of point 1.
-         */
+		/*
+		 * 2) Create a new LinkedList<Integer> and, in a single line of code
+		 * without using any looping construct (for, while), populate it with
+		 * the same contents of the list of point 1.
+		 */
+		List<Integer> lList = new LinkedList<Integer>(list);
+	
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
          */
-        /*
-         * 4) Using a single for-each, print the contents of the arraylist.
-         */
+	
+		/*
+		 * 4) Using a single for-each, print the contents of the arraylist.
+		 */
+		//System.out.println("list: " + list.toString());
+		System.out.print("[");
+		for(int elem : list) {
+			System.out.print(elem + ", ");
+		}
+		System.out.println("]");
+	
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
