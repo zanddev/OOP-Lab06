@@ -1,9 +1,11 @@
 package it.unibo.oop.lab.collections1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -51,11 +53,18 @@ public final class UseCollection {
 		 */
 		List<Integer> lList = new LinkedList<Integer>(list);
 	
-        /*
-         * 3) Using "set" and "get" and "size" methods, swap the first and last
-         * element of the first list. You can not use any "magic number".
-         * (Suggestion: use a temporary variable)
-         */
+		/*
+		 * 3) Using "set" and "get" and "size" methods, swap the first and last
+		 * element of the first list. You can not use any "magic number".
+		 * (Suggestion: use a temporary variable)
+		 */
+		/*int temp = list.get(0);
+		list.set(0, list.get(list.size() - 1));
+		list.set(list.size() - 1, temp);
+		*/
+		int temp = list.get(list.size() - 1);
+		list.set(list.size() - 1, list.get(0));
+		list.set(0, temp);
 	
 		/*
 		 * 4) Using a single for-each, print the contents of the arraylist.
@@ -74,12 +83,14 @@ public final class UseCollection {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
+	
         /*
          * 6) Measure the performance of reading 1000 times an element whose
          * position is in the middle of the collection for both ArrayList and
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example TestPerformance.java.
          */
+	
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
@@ -96,15 +107,35 @@ public final class UseCollection {
          * 
          * Oceania -> 38,304,000
          */
+		Map<String, Long> world = new HashMap<>();
+		world.put("Africa", 1_110_635_000L);
+		world.put("Americas", 972_005_000L);
+		world.put("Antarctica", 0L);
+		world.put("Asia", 4_298_723_000L);
+		world.put("Europe", 742_452_000L);
+		world.put("Oceania", 38_304_000L);
+	
         /*
          * 8) Compute the population of the world
          */
+		long population = 0L;
+		/*
+		// Sol 8.1
+		for(Long continentPopulation : world.values()) {
+			population += continentPopulation;
+		}
+		*/
+		// Sol 8.2
+		for(Map.Entry<String, Long> entry : world.entrySet()) {
+			population += entry.getValue();
+		}
+		System.out.println("World's population: " + population);
     }
-	
+	/*
 	private static void rangePopulator(List<Integer> list, int startingPoint, int endingPoint) {
 		for(int i = startingPoint; i < endingPoint; i++) {
 			list.add(i);
 		}
 		return;
-	}
+	}*/
 }
