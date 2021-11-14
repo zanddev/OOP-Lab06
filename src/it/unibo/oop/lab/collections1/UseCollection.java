@@ -1,23 +1,50 @@
 package it.unibo.oop.lab.collections1;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
  * 
  */
 public final class UseCollection {
 
-    private UseCollection() {
-    }
+	private UseCollection() {
+	}
 
-    /**
-     * @param s
-     *            unused
-     */
-    public static void main(final String... s) {
-        /*
-         * 1) Create a new ArrayList<Integer>, and populate it with the numbers
-         * from 1000 (included) to 2000 (excluded).
-         */
+	/**
+	 * @param s
+	 *            unused
+	 */
+	public static void main(final String... s) {
+		/*
+		 * 1 - Creates a new ArrayList<Integer>, and populate it with the numbers
+		 *       from 1000 (included) to 2000 (excluded).
+		 */
+		List<Integer> list = new ArrayList<Integer>();
+	
+		
+		// Sol 1.1
+		/*
+		final int START = 1000;
+		final int END = 2000;
+		for(int i = START; i < END; i++) {
+			list.add(i);
+		}*/
+	
+		// Sol 1.2
+		//UseCollection.rangePopulator(list, 1000, 2000);
+	
+		// Sol 1.3
+		for(int i : new RangeIterator(1000, 2000)) {
+			list.add(i);
+		}
+	
+		System.out.println("list: " + list.toString());
+	
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
          * without using any looping construct (for, while), populate it with
@@ -64,4 +91,11 @@ public final class UseCollection {
          * 8) Compute the population of the world
          */
     }
+	
+	private static void rangePopulator(List<Integer> list, int startingPoint, int endingPoint) {
+		for(int i = startingPoint; i < endingPoint; i++) {
+			list.add(i);
+		}
+		return;
+	}
 }
