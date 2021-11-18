@@ -18,7 +18,7 @@ Execute the test within Eclipse.
 
 ### `RobotEnvironment.move()`
 
-Modify the `move` method in RobotEnvironment in such a way that a `PositionOutOfBoundsException` (already provided) is thrown in case the robot gets outside the environment limits
+Modify the `move` method in RobotEnvironment in such a way that a `PositionOutOfBoundException` (already provided) is thrown in case the robot gets outside the environment limits
 
 #### Guideline
 
