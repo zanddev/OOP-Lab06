@@ -47,7 +47,7 @@ public final class BaseRobotTest {
              * this must not be reached;
              */
             fail("I should not get such far!");
-        } catch (PositionOutOfBoundException e) {
+        } catch (PositionOutOfBoundsException e) {
             assertTrue(e.getMessage().contains("pos(" + (WORLD_X_UPPER_LIMIT + 1) + ", 0)"));
         } catch (NotEnoughBatteryException e) {
             fail("No battery problems expected here!");
@@ -61,7 +61,7 @@ public final class BaseRobotTest {
                 r1.moveUp();
             }
             r1.moveUp();
-        } catch (PositionOutOfBoundException e) {
+        } catch (PositionOutOfBoundsException e) {
             assertTrue(e.getMessage().contains("pos(" + WORLD_X_UPPER_LIMIT + ", " + (WORLD_Y_UPPER_LIMIT + 1) + ")"));
         } catch (NotEnoughBatteryException e) {
             fail("Battery should not be the issue here!");
@@ -87,7 +87,7 @@ public final class BaseRobotTest {
             }
             r2.moveDown();
             fail("You're not supposed to get that far with no battery!");
-        } catch (PositionOutOfBoundException e) {
+        } catch (PositionOutOfBoundsException e) {
             fail("I expected battery to fail!");
         } catch (NotEnoughBatteryException e) {
             assertTrue(e.getMessage().contains(" Battery level is " + r2.getBatteryLevel()));

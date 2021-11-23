@@ -44,7 +44,7 @@ public class RobotEnvironment {
      * @param newY
      *            new position on Y
      * 
-     * @throws PositionOutOfBoundException
+     * @throws PositionOutOfBoundsException
      *             in case of stepping out of the world
      */
     public void move(final int newX, final int newY) {
@@ -55,7 +55,7 @@ public class RobotEnvironment {
             this.position.setX(newX);
             this.position.setY(newY);
         } else {
-            throw new PositionOutOfBoundException(newX, newY);
+            throw new PositionOutOfBoundsException(newX, newY);
         }
     }
 

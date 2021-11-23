@@ -31,7 +31,7 @@ public class Robot {
     /**
      * Moves the robot up by one unit.
      * 
-     * @throws PositionOutOfBoundException
+     * @throws PositionOutOfBoundsException
      *             raised if moving out of environment
      * @throws NotEnoughBatteryException
      *             if battery is not enough
@@ -43,7 +43,7 @@ public class Robot {
     /**
      * Moves the robot down by one unit.
      * 
-     * @throws PositionOutOfBoundException
+     * @throws PositionOutOfBoundsException
      *             raised if moving out of environment
      * @throws NotEnoughBatteryException
      *             if battery is not enough
@@ -55,7 +55,7 @@ public class Robot {
     /**
      * Moves the robot left by one unit.
      * 
-     * @throws PositionOutOfBoundException
+     * @throws PositionOutOfBoundsException
      *             raised if moving out of environment
      * @throws NotEnoughBatteryException
      *             if battery is not enough
@@ -67,7 +67,7 @@ public class Robot {
     /**
      * Moves the robot right by one unit.
      * 
-     * @throws PositionOutOfBoundException
+     * @throws PositionOutOfBoundsException
      *             raised if moving out of environment
      * @throws NotEnoughBatteryException
      *             if battery is not enough
