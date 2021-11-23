@@ -37,6 +37,9 @@ public class PositionOutOfBoundsException extends IllegalStateException {
         return "Can not move to pos(" + this.x + ", " + this.y + "), out of bounds";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getMessage() {
         return this.toString();
