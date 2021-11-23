@@ -5,7 +5,7 @@ package it.unibo.oop.lab.exception1;
  * its environment.
  * 
  */
-public class PositionOutOfBoundsException extends IllegalStateException {
+public final class PositionOutOfBoundsException extends IllegalStateException {
 
     private static final long serialVersionUID = 1L;
     private final int x;

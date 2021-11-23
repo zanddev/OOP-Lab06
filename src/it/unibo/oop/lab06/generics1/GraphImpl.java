@@ -15,7 +15,7 @@ import java.util.Set;
  *
  * @param <N> the type of the nodes of the graph
  */
-public class GraphImpl<N> implements Graph<N> {
+public final class GraphImpl<N> implements Graph<N> {
 
     private final Map<N, Set<N>> edges = new LinkedHashMap<>();
     private final FringeAccumulationStrategy<Step<N>> strategy;

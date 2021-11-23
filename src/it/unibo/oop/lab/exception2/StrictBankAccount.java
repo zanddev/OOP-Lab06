@@ -26,11 +26,11 @@ public class StrictBankAccount implements BankAccount {
      * @param maximumAllowedAtmTransactions
      *            max no of ATM transactions allowed
      */
-	public StrictBankAccount(final int usrID, final double balance, final int maximumAllowedAtmTransactions) {
-		this.usrID = usrID;
-		this.balance = balance;
-		this.maximumAllowedATMTransactions = maximumAllowedAtmTransactions;
-	}
+    public StrictBankAccount(final int usrID, final double balance, final int maximumAllowedAtmTransactions) {
+        this.usrID = usrID;
+        this.balance = balance;
+        this.maximumAllowedATMTransactions = maximumAllowedAtmTransactions;
+    }
 
     /**
      * 
@@ -77,7 +77,7 @@ public class StrictBankAccount implements BankAccount {
     }
 
     private boolean isAtmTransactionAvailable() {
-    	return transactionsOnAtm < maximumAllowedATMTransactions;
+        return transactionsOnAtm < maximumAllowedATMTransactions;
     }
 
     /**
