@@ -5,7 +5,7 @@ package it.unibo.oop.lab.exception1;
  * its environment.
  * 
  */
-public class PositionOutOfBoundException extends IllegalStateException {
+public final class PositionOutOfBoundsException extends IllegalStateException {
 
     /**
      * 
@@ -22,7 +22,7 @@ public class PositionOutOfBoundException extends IllegalStateException {
      * @param initY
      *            position on Y that caused the exception
      */
-    public PositionOutOfBoundException(final int initX, final int initY) {
+    public PositionOutOfBoundsException(final int initX, final int initY) {
         super();
         this.x = initX;
         this.y = initY;
