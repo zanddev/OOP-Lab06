@@ -1,8 +1,9 @@
 package it.unibo.oop.lab.collections1;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public final class UseCollection {
 		 *       from 1000 (included) to 2000 (excluded).
 		 */
 		List<Integer> list = new ArrayList<Integer>();
-	
+
 		// Sol 1.1
 		/*
 		final int START = 1000;
@@ -45,14 +46,14 @@ public final class UseCollection {
 		}
 	
 		System.out.println("list: " + list.toString());
-	
+
 		/*
 		 * 2) Create a new LinkedList<Integer> and, in a single line of code
 		 * without using any looping construct (for, while), populate it with
 		 * the same contents of the list of point 1.
 		 */
 		List<Integer> lList = new LinkedList<Integer>(list);
-	
+
 		/*
 		 * 3) Using "set" and "get" and "size" methods, swap the first and last
 		 * element of the first list. You can not use any "magic number".
@@ -65,7 +66,7 @@ public final class UseCollection {
 		int temp = list.get(list.size() - 1);
 		list.set(list.size() - 1, list.get(0));
 		list.set(0, temp);
-	
+
 		/*
 		 * 4) Using a single for-each, print the contents of the arraylist.
 		 */
@@ -75,22 +76,29 @@ public final class UseCollection {
 			System.out.print(elem + ", ");
 		}
 		System.out.println("]");
-	
-        /*
-         * 5) Measure the performance of inserting new elements in the head of
-         * the collection: measure the time required to add 100.000 elements as
-         * first element of the collection for both ArrayList and LinkedList,
-         * using the previous lists. In order to measure times, use as example
-         * TestPerformance.java.
-         */
-	
-        /*
-         * 6) Measure the performance of reading 1000 times an element whose
-         * position is in the middle of the collection for both ArrayList and
-         * LinkedList, using the collections of point 5. In order to measure
-         * times, use as example TestPerformance.java.
-         */
-	
+
+		list.clear();
+		lList.clear();
+
+		/*
+		 * 5) Measure the performance of inserting new elements in the head of
+		 * the collection: measure the time required to add 100.000 elements as
+		 * first element of the collection for both ArrayList and LinkedList,
+		 * using the previous lists. In order to measure times, use as example
+		 * TestPerformance.java.
+		 */
+		UseCollection.performanceInserter(list);
+		UseCollection.performanceInserter(lList);
+
+		/*
+		 * 6) Measure the performance of reading 1000 times an element whose
+		 * position is in the middle of the collection for both ArrayList and
+		 * LinkedList, using the collections of point 5. In order to measure
+		 * times, use as example TestPerformance.java.
+		 */
+		UseCollection.performanceReader(list);
+		UseCollection.performanceReader(lList);
+
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
@@ -114,7 +122,7 @@ public final class UseCollection {
 		world.put("Asia", 4_298_723_000L);
 		world.put("Europe", 742_452_000L);
 		world.put("Oceania", 38_304_000L);
-	
+
         /*
          * 8) Compute the population of the world
          */
@@ -130,7 +138,66 @@ public final class UseCollection {
 			population += entry.getValue();
 		}
 		System.out.println("World's population: " + population);
-    }
+	}
+
+	/**
+	 * Example performance measuring. Use this class as working example of how to
+	 * measure the time necessary to perform operations on data structures.
+	 */
+	private static void performanceInserter(final Collection<Integer> list) {
+		final int ELEMS = 100_000;
+		final int TO_MS = 1_000_000;
+
+		/*
+		 * Prepare a variable for measuring time
+		 */
+		long time = System.nanoTime();
+		/*
+		 * Run the benchmark
+		 */
+		for (int i = 1; i <= ELEMS; i++) {
+			list.add(i);
+		}
+		/*
+		 * Compute the time and print result
+		 */
+		time = System.nanoTime() - time;
+		System.out.println("Inserting " + ELEMS
+				+ " int elements in a Collection took " + time
+				+ "ns (" + time / TO_MS + "ms)");
+		//System.out.println(list);
+	}
+
+	/**
+	 * Example performance measuring. Use this class as working example of how to
+	 * measure the time necessary to perform operations on data structures.
+	 */
+	private static void performanceReader(final List<Integer> list) {
+		final int TIMES = 1_000;
+		final int TO_MS = 1_000_000;
+	
+		final int medianPosition = list.size() / 2;
+	
+		/*
+		 * Prepare a variable for measuring time
+		 */
+		long time = System.nanoTime();
+		/*
+		 * Run the benchmark
+		 */
+		for (int i = 1; i <= TIMES; i++) {
+			list.get(medianPosition);
+		}
+		/*
+		 * Compute the time and print result
+		 */
+		time = System.nanoTime() - time;
+		System.out.println("Reading " + TIMES
+				+ " times the median element of the List took " + time
+				+ "ns (" + time / TO_MS + "ms)");
+		//System.out.println(list);
+	}
+
 	/*
 	private static void rangePopulator(List<Integer> list, int startingPoint, int endingPoint) {
 		for(int i = startingPoint; i < endingPoint; i++) {
