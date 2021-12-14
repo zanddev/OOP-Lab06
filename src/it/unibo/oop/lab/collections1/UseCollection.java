@@ -99,22 +99,22 @@ public final class UseCollection {
 		UseCollection.performanceReader(list);
 		UseCollection.performanceReader(lList);
 
-        /*
-         * 7) Build a new Map that associates to each continent's name its
-         * population:
-         * 
-         * Africa -> 1,110,635,000
-         * 
-         * Americas -> 972,005,000
-         * 
-         * Antarctica -> 0
-         * 
-         * Asia -> 4,298,723,000
-         * 
-         * Europe -> 742,452,000
-         * 
-         * Oceania -> 38,304,000
-         */
+		/*
+		 * 7) Build a new Map that associates to each continent's name its
+		 * population:
+		 * 
+		 * Africa -> 1,110,635,000
+		 * 
+		 * Americas -> 972,005,000
+		 * 
+		 * Antarctica -> 0
+		 * 
+		 * Asia -> 4,298,723,000
+		 * 
+		 * Europe -> 742,452,000
+		 * 
+		 * Oceania -> 38,304,000
+		 */
 		Map<String, Long> world = new HashMap<>();
 		world.put("Africa", 1_110_635_000L);
 		world.put("Americas", 972_005_000L);
@@ -123,9 +123,9 @@ public final class UseCollection {
 		world.put("Europe", 742_452_000L);
 		world.put("Oceania", 38_304_000L);
 
-        /*
-         * 8) Compute the population of the world
-         */
+		/*
+		 * 8) Compute the population of the world
+		 */
 		long population = 0L;
 		/*
 		// Sol 8.1
