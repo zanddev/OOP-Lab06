@@ -16,7 +16,7 @@ import java.util.List;
  * @param <U>
  *            Specific user type
  */
-public class SocialNetworkUserImpl<U extends User> extends UserImpl implements SocialNetworkUser<U> {
+public final class SocialNetworkUserImpl<U extends User> extends UserImpl implements SocialNetworkUser<U> {
 
     /*
      * 
