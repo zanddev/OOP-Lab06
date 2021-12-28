@@ -31,7 +31,7 @@ public final class TestWithExceptions {
             | SecurityException e
         ) {
             /*
-             * Same behavior for any exception: use multi-catch.
+             * Same behaviour for any exception: use multi-catch.
              * 
              * Do not catch generic Exceptions: if they are unforeseen, it is
              * better to let the test fail badly, so that the developer is

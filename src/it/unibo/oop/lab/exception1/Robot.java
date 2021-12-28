@@ -102,7 +102,7 @@ public class Robot {
     }
 
     /**
-     * Consume the amount of energy required to move the robot substracting it
+     * Consume the amount of energy required to move the robot subtracting it
      * from the current battery level.
      */
     protected void consumeBatteryForMovement() {
