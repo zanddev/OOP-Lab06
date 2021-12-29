@@ -36,9 +36,10 @@ public class Robot {
      */
     public boolean moveUp() {
         try {
-            return this.moveToPosition(environment.getCurrPosX(), this.environment.getCurrPosY() + Robot.MOVEMENT_DELTA);
+            return this.moveToPosition(this.environment.getCurrPosX(),
+                    this.environment.getCurrPosY() + Robot.MOVEMENT_DELTA);
         } catch(PositionOutOfBoundsException e) {
-            this.log("Can not move to (" + environment.getCurrPosX() + "," + environment.getCurrPosY()
+            this.log("Can not move to (" + this.environment.getCurrPosX() + "," + this.environment.getCurrPosY()
                     + ") the robot is touching the top world boundary");
             return false;
         }
@@ -51,9 +52,10 @@ public class Robot {
      */
     public boolean moveDown() {
         try {
-            return this.moveToPosition(environment.getCurrPosX(), this.environment.getCurrPosY() - Robot.MOVEMENT_DELTA);
+            return this.moveToPosition(this.environment.getCurrPosX(),
+                    this.environment.getCurrPosY() - Robot.MOVEMENT_DELTA);
         } catch(PositionOutOfBoundsException e) {
-            this.log("Can not move to (" + environment.getCurrPosX() + "," + environment.getCurrPosY()
+            this.log("Can not move to (" + this.environment.getCurrPosX() + "," + this.environment.getCurrPosY()
                     + ") the robot is touching the bottom world boundary");
             return false;
         }
@@ -66,9 +68,10 @@ public class Robot {
      */
     public boolean moveLeft() {
         try {
-            return this.moveToPosition(environment.getCurrPosX() - Robot.MOVEMENT_DELTA, this.environment.getCurrPosY());
+            return this.moveToPosition(this.environment.getCurrPosX() - Robot.MOVEMENT_DELTA,
+                    this.environment.getCurrPosY());
         } catch(PositionOutOfBoundsException e) {
-            this.log("Can not move to (" + environment.getCurrPosX() + "," + environment.getCurrPosY()
+            this.log("Can not move to (" + this.environment.getCurrPosX() + "," + this.environment.getCurrPosY()
                     + ") the robot is touching the left world boundary");
             return false;
         }
@@ -81,9 +84,10 @@ public class Robot {
      */
     public boolean moveRight() {
         try {
-            return this.moveToPosition(environment.getCurrPosX() + Robot.MOVEMENT_DELTA, this.environment.getCurrPosY());
+            return this.moveToPosition(this.environment.getCurrPosX() + Robot.MOVEMENT_DELTA,
+                    this.environment.getCurrPosY());
         } catch(PositionOutOfBoundsException e) {
-            this.log("Can not move to (" + environment.getCurrPosX() + "," + environment.getCurrPosY()
+            this.log("Can not move to (" + this.environment.getCurrPosX() + "," + this.environment.getCurrPosY()
                     + ") the robot is touching the right world boundary");
             return false;
         }
@@ -93,7 +97,7 @@ public class Robot {
      * Fully recharge the robot.
      */
     public void recharge() {
-        this.batteryLevel = BATTERY_FULL;
+        this.batteryLevel = Robot.BATTERY_FULL;
     }
 
     /**
@@ -136,7 +140,7 @@ public class Robot {
         if (batteryLevel >= amount) {
             this.batteryLevel -= amount;
         } else {
-            this.batteryLevel = BATTERY_EMPTY;
+            this.batteryLevel = Robot.BATTERY_EMPTY;
         }
     }
 
