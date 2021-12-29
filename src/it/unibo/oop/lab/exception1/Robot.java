@@ -32,40 +32,52 @@ public class Robot {
     /**
      * Moves the robot up by one unit.
      * 
-     * @return If the Up movement has been performed
+     * @throws PositionOutOfBoundsException
+     *            if the robot tries to move out of the top bound
+     * @throws BatteryNotEnoughException
+     *            if the robot tries to move when the battery is exhausted
      */
-    public boolean moveUp() throws PositionOutOfBoundsException {
-        return this.moveToPosition(this.environment.getCurrPosX(),
+    public void moveUp() throws PositionOutOfBoundsException, BatteryNotEnoughException {
+        this.moveToPosition(this.environment.getCurrPosX(),
                 this.environment.getCurrPosY() + Robot.MOVEMENT_DELTA);
     }
 
     /**
      * Moves the robot down by one unit.
      * 
-     * @return If the Down movement has been performed
+     * @throws PositionOutOfBoundsException
+     *            if the robot tries to move out of the bottom bound
+     * @throws BatteryNotEnoughException
+     *            if the robot tries to move when the battery is exhausted
      */
-    public boolean moveDown() throws PositionOutOfBoundsException {
-        return this.moveToPosition(this.environment.getCurrPosX(),
+    public void moveDown() throws PositionOutOfBoundsException, BatteryNotEnoughException {
+        this.moveToPosition(this.environment.getCurrPosX(),
                 this.environment.getCurrPosY() - Robot.MOVEMENT_DELTA);
     }
 
     /**
      * Moves the robot left by one unit.
      * 
-     * @return A boolean indicating if the Left movement has been performed
+     * @throws PositionOutOfBoundsException
+     *            if the robot tries to move out of the left bound
+     * @throws BatteryNotEnoughException
+     *            if the robot tries to move when the battery is exhausted
      */
-    public boolean moveLeft() throws PositionOutOfBoundsException {
-        return this.moveToPosition(this.environment.getCurrPosX() - Robot.MOVEMENT_DELTA,
+    public void moveLeft() throws PositionOutOfBoundsException, BatteryNotEnoughException {
+        this.moveToPosition(this.environment.getCurrPosX() - Robot.MOVEMENT_DELTA,
                 this.environment.getCurrPosY());
     }
 
     /**
      * Moves the robot right by one unit.
      * 
-     * @return A boolean indicating if the Right movement has been performed
+     * @throws PositionOutOfBoundsException
+     *            if the robot tries to move out of the right bound
+     * @throws BatteryNotEnoughException
+     *            if the robot tries to move when the battery is exhausted
      */
-    public boolean moveRight() throws PositionOutOfBoundsException {
-        return this.moveToPosition(this.environment.getCurrPosX() + Robot.MOVEMENT_DELTA,
+    public void moveRight() throws PositionOutOfBoundsException, BatteryNotEnoughException {
+        this.moveToPosition(this.environment.getCurrPosX() + Robot.MOVEMENT_DELTA,
                 this.environment.getCurrPosY());
     }
 
@@ -83,19 +95,21 @@ public class Robot {
      *            the new X position to move the robot to
      * @param newY
      *            the new Y position to move the robot to
-     * @return true if robot gets moved, false otherwise
+     * @throws PositionOutOfBoundsException
+     *            if the robot tries to move out of bounds
+     * @throws BatteryNotEnoughException
+     *            if the robot tries to move when the battery is exhausted
      */
-    private boolean moveToPosition(final int newX, final int newY) throws PositionOutOfBoundsException {
-        boolean returnValue = true;
+    private void moveToPosition(final int newX, final int newY) throws
+            PositionOutOfBoundsException, BatteryNotEnoughException {
         if (this.isBatteryEnoughToMove()) {
             this.environment.move(newX, newY);
             this.consumeBatteryForMovement();
             this.log("Moved to position(" + newX + "," + newY + ").");
         } else {
-            this.log("Can not move to position(" + newX + "," + newY + "). Not enough battery.");
-            returnValue = false;
+            throw new BatteryNotEnoughException(newX, newY, this.batteryLevel);
         }
-        return returnValue;
+        return;
     }
 
     /**

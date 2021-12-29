@@ -3,7 +3,6 @@ package it.unibo.oop.lab.exception1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -28,7 +27,7 @@ public final class BaseRobotTest {
         /*
          *  1) Create a Robot with battery level 100
          */
-        final Robot r1 = new Robot("SimpleRobot", 100);
+        final Robot r1 = new Robot("SimpleRobot1", 100);
         // checking if robot is in position x=0; y=0
         assertEquals("[CHECKING ROBOT INIT POS X]", 0, r1.getEnvironment().getCurrPosX());
         assertEquals("[CHECKING ROBOT INIT POS Y]", 0, r1.getEnvironment().getCurrPosY());
@@ -36,18 +35,16 @@ public final class BaseRobotTest {
          * 2) Move the robot right until it touches the world limit
          */
         for (int i = 0; i < RobotEnvironment.WORLD_X_UPPER_LIMIT; i++) {
-            // check if position if coherent
+            // check if position if coherent, must not throw PositionOutOfBoundsException
             try {
-                assertTrue("[CHECKING MOVING RIGHT]", r1.moveRight());
-            } catch (
-                PositionOutOfBoundsException e
-            ) {
+                r1.moveRight();
+            } catch (PositionOutOfBoundsException e) {
                 fail(e.getMessage());
             }
         }
-        // reached the right limit of the world
+        // reached the right limit of the world, must throw PositionOutOfBoundsException
         try {
-            assertFalse("[CHECKING MOVING RIGHT]", r1.moveRight());
+            r1.moveRight();
             fail("PositionOutOfBoundsException not launched when it was expected!");
         } catch (PositionOutOfBoundsException e) {
             assertNotNull(e.getMessage());
@@ -60,18 +57,16 @@ public final class BaseRobotTest {
          * 2) Move to the top until it reaches the upper right corner of the world
          */
         for (int i = 0; i < RobotEnvironment.WORLD_Y_UPPER_LIMIT; i++) {
-            // check if position if coherent
+            // check if position if coherent, must not throw PositionOutOfBoundsException
             try {
-                assertTrue("[CHECKING MOVING UP]", r1.moveUp());
-            } catch (
-                PositionOutOfBoundsException e
-            ) {
+                r1.moveUp();
+            } catch (PositionOutOfBoundsException e) {
                 fail(e.getMessage());
             }
         }
-        // reached the upper limit of the world
+        // reached the upper limit of the world, must throw PositionOutOfBoundsException
         try {
-            assertFalse("[CHECKING MOVING UP]", r1.moveUp());
+            r1.moveUp();
             fail("PositionOutOfBoundsException not launched when it was expected!");
         } catch (PositionOutOfBoundsException e) {
             assertNotNull(e.getMessage());
@@ -91,11 +86,15 @@ public final class BaseRobotTest {
         final Robot r2 = new Robot("SimpleRobot2", 20);
         /*
          * Repeatedly move the robot up and down until the battery is completely
-         * exhausted.
+         * exhausted, must not throw BatteryNotEnoughException.
          */
-        while (r2.getBatteryLevel() > 0) {
-            r2.moveUp();
-            r2.moveDown();
+        try {
+            while (r2.getBatteryLevel() > 0) {
+                r2.moveUp();
+                r2.moveDown();
+            }
+        } catch (BatteryNotEnoughException e) {
+            fail(e.getMessage());
         }
         // verify battery level:
         // expected, actual, delta (accepted error as we deal with decimal
@@ -103,8 +102,14 @@ public final class BaseRobotTest {
         assertEquals(0d, r2.getBatteryLevel(), 0);
         // verify position: same as start position
         assertEquals("[CHECKING ROBOT INIT POS Y]", 0, r2.getEnvironment().getCurrPosY());
-        // out of world: returns false
-        assertFalse("[CHECKING MOVING UP]", r2.moveUp());
+        // battery exhausted, must throw BatteryNotEnoughException
+        try {
+            r2.moveUp();
+            fail("BatteryNotEnoughException not launched when it was expected!");
+        } catch (BatteryNotEnoughException e) {
+            assertNotNull(e.getMessage());
+            assertFalse(e.getMessage().isEmpty());
+        }
         // recharge battery
         r2.recharge();
         // verify battery level
