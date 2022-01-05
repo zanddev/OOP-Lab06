@@ -29,19 +29,8 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      * Save people followed by a user organised in groups in a generic-type Mao
      */
 
-    /*
-     * [CONSTRUCTORS]
-     * 
-     * 1) Complete the definition of the constructor below, for building a user
-     * participating in a social network, with 4 parameters, initialising:
-     * 
-     * - firstName - lastName - username - age and every other necessary field
-     * 
-     * 2) Define a further constructor where age is defaulted to -1
-     */
-
     /**
-     * Builds a new {@link SocialNetworkUserImpl}.
+     * Builds a new {@link SocialNetworkUserImpl} participating in a social network.
      * 
      * @param name
      *            the user first name
@@ -51,10 +40,25 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      *            user's age
      * @param user
      *            alias of the user, i.e. the way a user is identified on an
-     *            application
+     *            application (username)
      */
     public SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
+    }
+
+    /**
+     * Builds a new {@link SocialNetworkUserImpl} without defining the user's age.
+     * 
+     * @param name
+     *            the user first name
+     * @param surname
+     *            the user last name
+     * @param user
+     *            alias of the user, i.e. the way a user is identified on an
+     *            application
+     */
+    public SocialNetworkUserImpl(final String name, final String surname, final String user) {
+        super(name, surname, user);
     }
 
     /*
