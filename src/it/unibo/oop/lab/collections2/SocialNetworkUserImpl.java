@@ -1,7 +1,10 @@
 package it.unibo.oop.lab.collections2;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 
@@ -19,15 +22,11 @@ import java.util.List;
 public final class SocialNetworkUserImpl<U extends User> extends UserImpl implements SocialNetworkUser<U> {
 
     /*
-     * 
-     * [FIELDS]
-     * 
-     * Define any necessary field
-     * 
-     * In order to save the people followed by a user organised in groups, adopt
-     * a generic-type Map:
-     * 
-     * think of what type of keys and values would best suit the requirements
+     * Save people followed by a user organised in groups in a generic-type Mao
+     */
+    final Map<String, Set<U>> friends = new HashMap<>();
+    /*
+     * Save people followed by a user organised in groups in a generic-type Mao
      */
 
     /*
