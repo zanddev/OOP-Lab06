@@ -24,7 +24,7 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      * 
      * Define any necessary field
      * 
-     * In order to save the people followed by a user organized in groups, adopt
+     * In order to save the people followed by a user organised in groups, adopt
      * a generic-type Map:
      * 
      * think of what type of keys and values would best suit the requirements
@@ -34,7 +34,7 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      * [CONSTRUCTORS]
      * 
      * 1) Complete the definition of the constructor below, for building a user
-     * participating in a social network, with 4 parameters, initializing:
+     * participating in a social network, with 4 parameters, initialising:
      * 
      * - firstName - lastName - username - age and every other necessary field
      * 
@@ -45,9 +45,9 @@ public final class SocialNetworkUserImpl<U extends User> extends UserImpl implem
      * Builds a new {@link SocialNetworkUserImpl}.
      * 
      * @param name
-     *            the user firstname
+     *            the user first name
      * @param surname
-     *            the user lastname
+     *            the user last name
      * @param userAge
      *            user's age
      * @param user
